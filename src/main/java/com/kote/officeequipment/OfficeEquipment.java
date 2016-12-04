@@ -37,7 +37,7 @@ public class OfficeEquipment {
 		}
 
     public void run() {
-        final boolean[] NoFirst = {false};
+        boolean NoFirst = false;
         Command Comm = new Command();
         try {
             Equipments = ReF.readF();
@@ -45,9 +45,9 @@ public class OfficeEquipment {
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-        while ((!Comm.name.equals(Comm.Commands[0])) || (!NoFirst[0])) {
+        while ((!Comm.name.equals(Comm.Commands[0])) || (!NoFirst)) {
             Comm.doCommand();
-            NoFirst[0] =true;
+            NoFirst =true;
             Thread t = new Thread(new Runnable() {
                 public void run() {
                     if(Comm.name.startsWith(Comm.Commands[1])) {
