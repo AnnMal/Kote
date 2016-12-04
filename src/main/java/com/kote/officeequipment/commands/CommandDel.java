@@ -17,7 +17,8 @@ public class CommandDel extends Command{
 
     /** Удаление */
 
-    public String DelCommand(String Com) {
+   // @Override
+    public void delCommand(String Com) {
         Pattern p = Pattern.compile("delete --sku (\\d+)",Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
         Matcher m = p.matcher(Com);
         if (!m.matches()) {
@@ -32,7 +33,7 @@ public class CommandDel extends Command{
                 }
             }
         }
-        return("SUCCESSFUL DELETE");
+        //return("SUCCESSFUL DELETE");
     }
 
 

@@ -32,7 +32,7 @@ public class CommandAdd extends Command{
      *   Add
      **/
 
-    public String AddCommand(String Com) {
+    public void addCommand(String Com) {
         //add --sku 3 --type MONITOR --name "ViewSonic VA2223WM" --quantity 1 --date 01.11.2016 --color BW --kind LCD
         //add --sku 17 --type MONITOR --name "ViewSonic VA2223WM" --date 01.11.2016 --color true --size 22 --kind LCD
         //add --sku 17 --type MONITOR --name "ViewSonic VA2223WM" --color true --size 22 --kind LCD
@@ -74,7 +74,7 @@ public class CommandAdd extends Command{
                         FDel = true;
                     }
                 }	else {
-                    return "ERROR! No sku! You mast enter this: --sku <number>";
+                    System.err.println("ERROR! No sku! You mast enter this: --sku <number>");
                 }
             } else if (RStr[j].startsWith("type")) {
                 EArg[1]=true;
@@ -96,10 +96,10 @@ public class CommandAdd extends Command{
                             break;
                     }
                     if (Pr==0) {
-                        return("ERROR. Not correct of type! It mast be MONITOR, PRINTER or SCANNER");
+                        System.err.println("ERROR. Not correct of type! It mast be MONITOR, PRINTER or SCANNER");
                     }
                 } else {
-                    return("ERROR. No type. It mast be MONITOR, PrINTER or SCANNER");
+                    System.err.println("ERROR. No type. It mast be MONITOR, PrINTER or SCANNER");
                 }
             } else if (RStr[j].startsWith("name")) {
                 EArg[2] = true;
@@ -111,7 +111,7 @@ public class CommandAdd extends Command{
                 if (TStr[1].matches("[0-9]*"))	{
                     TQua = Integer.valueOf(TStr[1]);
                 } else {
-                    return("ERROR. Argument <quantity> is not number!!");
+                    System.err.println("ERROR. Argument <quantity> is not number!!");
                 }
             } else if (RStr[j].startsWith("color")) {
                 EArg[4] = true;
@@ -124,7 +124,7 @@ public class CommandAdd extends Command{
                 if (TStr[1].matches("[0-9]*"))	{
                     TSiz = Integer.valueOf(TStr[1]);
                 } else {
-                    return("ERROR. Argument <size> is not number!!");
+                    System.err.println("ERROR. Argument <size> is not number!!");
                 }
             }  else if (RStr[j].startsWith("network")) {
                 EArg[5] = true;
@@ -132,7 +132,7 @@ public class CommandAdd extends Command{
                 if ((TStr[1]=="true")||(TStr[1]=="false")) {
                     TNet = Boolean.valueOf(TStr[1]);
                 } else {
-                    return("ERROR. Argument <network> is not boolean!!");
+                    System.err.println("ERROR. Argument <network> is not boolean!!");
                 }
             } else if (RStr[j].startsWith("kind")) {				//"TUBE", "LCD", "PROJECTOR"
                 EArg[6] = true;
@@ -180,12 +180,12 @@ public class CommandAdd extends Command{
             }
         }
         if (fArg) {
-            return(TempS);
+            System.out.println(TempS);
         } else {
             if (FDel) {
                 System.out.println("WARNING! So element repeat. Ovewrride this element.");
                 //System.out.println(indexOfR);
-                DelCommand ("delete --sku "+ TSku);
+                delCommand ("delete --sku "+ TSku);
             }
             switch (Pr) {
                 case 1:
@@ -202,7 +202,7 @@ public class CommandAdd extends Command{
                     break;
             }
             //System.out.println(Arrays.toString(Sklad_Info.Equipments));
-            return("SUCCESSFUL ADD");
+            System.err.println("SUCCESSFUL ADD");
         }
     }
 

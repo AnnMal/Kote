@@ -6,6 +6,9 @@
 package com.kote.officeequipment;
 
 import main.java.com.kote.officeequipment.commands.Command;
+import main.java.com.kote.officeequipment.commands.CommandAdd;
+import main.java.com.kote.officeequipment.commands.CommandDel;
+import main.java.com.kote.officeequipment.commands.CommandList;
 import main.java.com.kote.officeequipment.dbase.ReadFile;
 import main.java.com.kote.officeequipment.dbase.WriteFile;
 import main.java.com.kote.officeequipment.eq.Equipment;
@@ -19,7 +22,7 @@ import java.util.Map;
 
 
 /** Основной класс склада */
-public class OfficeEquipment implements ApplicationController {
+public class OfficeEquipment {
  
     public static String FILE_NAME = "officeequipment.dat";
     public static int COLLINES = 1;
@@ -28,36 +31,6 @@ public class OfficeEquipment implements ApplicationController {
 
     public ReadFile ReF = new ReadFile();
 
-    public Map<String, String> getAvailableCommands() {
-        return null;
-    }
-
-    public ru.prgmt.warehouse.application.result.CommandResult executeCommand(String name, Map<String, String> parameters, Paging paging) throws CommandNotFoundException {
-        int pp = paging.getPageNumber();
-        int ts = Equipments.size() - COLLINES*(pp-1);
-
-        List<Equipment> eq = new ArrayList<Equipment>(ts);
-
-        System.out.println(eq.size());
-        if (ts>COLLINES) {
-           // eq.Add(Equipments.get(1));
-            System.arraycopy(Equipments, COLLINES*(pp-1), eq, 0, COLLINES);
-        } else System.arraycopy(Equipments, COLLINES*(pp-1), eq, 0, ts);
-
-        String s = paging.getSortProperty();
-        //Arrays.sort(eq);
-        Page p = new Page(eq, paging, COLLINES); //Equipments.size()
-        PagedResult pr = new PagedResult(p);
-
-        eq = p.getContent();
-        //for (int j=0; j<2; j++) {
-        //for (Equipment lPr : eq) {
-            //System.out.println(paging.getPageNumber());
-            //lPr.read();
-       //     System.out.println(eq.get(0));
-        //}
-        return pr;
-    }
 
     public static void main(String[] args) {
 			new OfficeEquipment().run();
@@ -76,33 +49,25 @@ public class OfficeEquipment implements ApplicationController {
             Comm.doCommand();
             NoFirst[0] =true;
             Thread t = new Thread(new Runnable() {
-                //@Override
                 public void run() {
                     if(Comm.name.startsWith(Comm.Commands[1])) {
                         //list----------------------------
-                        int cp = (int) Math.ceil((Equipments.size()/COLLINES));
-                        for (int i=1; i<=cp; i++) {
-                        Paging page = new Paging(i, COLLINES, "name", true);
-                            System.out.println(page.getPageNumber());
-                        try {
-                            executeCommand(Comm.Commands[1], null, page);
-                        } catch (CommandNotFoundException e) {
-                            System.out.println(e);
-                        }}
+                        CommandList coml = new CommandList();
+                        coml.listCommand(Comm.name);
                         //--------------------------list
                     } else if(Comm.name.startsWith(Comm.Commands[2]))
 
                     {
                         //add--------------------------
-                        System.out.println(Comm.AddCommand(Comm.name));
-                        //проверить нет ли уже такого предмета и добавить предмет или добавить количество
-                        //Equipments.add(new Printer());
+                        CommandAdd coma = new CommandAdd();
+                        coma.addCommand(Comm.name);
                         //--------------------------add
                     } else if(Comm.name.startsWith(Comm.Commands[3]))
 
                     {
                         //delete--------------------------
-                        Comm.DelCommand(Comm.name);
+                        CommandDel comd = new CommandDel();
+                        comd.delCommand(Comm.name);
                         //--------------------------delete
                     } else if(!Comm.name.equals(Comm.Commands[0]))
 

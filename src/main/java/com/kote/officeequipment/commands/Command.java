@@ -20,9 +20,6 @@ public class Command {
     public WriteFile WrF = new WriteFile();
 
     /** Новая команда */
-
-    //public void Command() {};
-
     public void doCommand (){
         java.util.Scanner sc = new java.util.Scanner(System.in);;
         System.out.println("I am wait command:");
@@ -30,11 +27,13 @@ public class Command {
         name = sc.nextLine();
     }
 
-    public String AddCommand(String name) {
-        return "";
+    public void addCommand(String name) {
     }
 
-    public String DelCommand(String name) {
-        return "";
+    public void delCommand(String name) {
     }
+
+    public void listCommand(String name) {
+    }
+
 }
