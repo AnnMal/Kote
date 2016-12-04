@@ -30,7 +30,6 @@ public class Command {
         name = sc.nextLine();
     }
 
-
     public String AddCommand(String name) {
         return "";
     }

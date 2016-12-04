@@ -1,9 +1,6 @@
 .idea/
-*.ipr
-*.iml
-*.iws
-
 out/
 target/
 
-.DS_Store
+*.iml
+
