@@ -1,12 +1,8 @@
 /** Класс команд */
 
-package main.java.com.kote.officeequipment;
+package main.java.com.kote.officeequipment.commands;
 
-import com.kote.officeequipment.*;
-
-import java.lang.System.*;
-
-public class CommandExit extends com.kote.officeequipment.Command {
+public class CommandExit extends Command {
 
     public String name;
 

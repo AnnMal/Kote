@@ -7,7 +7,7 @@
 
 //add --type MONITOR --name "ViewSonic VA2223WM" --quantity 1 --date 01.11.2016 --color BW --kind LCD
 
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.eq;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -19,7 +19,7 @@ public class Monitor extends Equipment {
 	private String kind; 							//= {"ЭЛТ", "ЖК", "проектор"};
 
 	/** конструктор */
-	Monitor(int i, String t, String n, int q, boolean c, int s, String k) {
+	public Monitor(int i, String t, String n, int q, boolean c, int s, String k) {
 		SimpleDateFormat format1 = new SimpleDateFormat( "dd.MM.yyyy");
 		Date dat = new Date();
 		sku = i ;

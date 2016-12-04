@@ -5,6 +5,10 @@
 */
 package com.kote.officeequipment;
 
+import main.java.com.kote.officeequipment.commands.Command;
+import main.java.com.kote.officeequipment.dbase.ReadFile;
+import main.java.com.kote.officeequipment.dbase.WriteFile;
+import main.java.com.kote.officeequipment.eq.Equipment;
 import ru.prgmt.warehouse.application.*;
 import ru.prgmt.warehouse.application.result.*;
 
@@ -28,7 +32,7 @@ public class OfficeEquipment implements ApplicationController {
         return null;
     }
 
-    public CommandResult executeCommand(String name, Map<String, String> parameters, Paging paging) throws CommandNotFoundException {
+    public ru.prgmt.warehouse.application.result.CommandResult executeCommand(String name, Map<String, String> parameters, Paging paging) throws CommandNotFoundException {
         int pp = paging.getPageNumber();
         int ts = Equipments.size() - COLLINES*(pp-1);
 

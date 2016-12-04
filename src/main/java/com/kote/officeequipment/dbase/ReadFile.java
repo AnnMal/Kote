@@ -1,7 +1,8 @@
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.dbase;
 
 import java.io.*;
 import java.util.*;
+import main.java.com.kote.officeequipment.eq.Equipment;
 
 public class ReadFile  {
 
@@ -11,7 +12,7 @@ public class ReadFile  {
 	public List<Equipment> readF()  throws Exception {
 	//public Map<String, Device> getData() throws Exception {
         //initFile();
-        try (FileInputStream fin = new FileInputStream(OfficeEquipment.FILE_NAME);
+        try (FileInputStream fin = new FileInputStream(com.kote.officeequipment.OfficeEquipment.FILE_NAME);
              ObjectInputStream ois = new ObjectInputStream(fin)) {
             return (List<Equipment>) ois.readObject();
         }

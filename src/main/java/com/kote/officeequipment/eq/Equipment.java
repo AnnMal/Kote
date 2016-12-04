@@ -7,7 +7,7 @@
 *  Количество
 */
 
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.eq;
 
 import java.io.Serializable;
 import java.util.*;

@@ -1,4 +1,6 @@
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.dbase;
+
+import main.java.com.kote.officeequipment.eq.Equipment;
 
 import java.io.*;
 import java.util.*; 
@@ -16,8 +18,8 @@ public class WriteFile  {
 
 	//@Override		
 	public static void Add(List<Equipment> EquipWrite) {//throws Exception { 
-        try (FileOutputStream fos = new FileOutputStream(OfficeEquipment.FILE_NAME);
-             ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+        try (FileOutputStream fos = new FileOutputStream(com.kote.officeequipment.OfficeEquipment.FILE_NAME);
+			 ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 				oos.writeObject(EquipWrite);
         } catch (Exception e) {
             new Exception(ERROR_CANNOT_ACCESS_FILE);

@@ -5,7 +5,7 @@
 *   Тип установки: переносной, настольный, стационарный.
 */	 
 
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.eq;
 
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -18,7 +18,7 @@ public class Printer extends Equipment {
 	private String install;
 
 	/** конструктор */
-	Printer(int i, String t, String n, int q, boolean c, boolean nn) {
+	public Printer(int i, String t, String n, int q, boolean c, boolean nn) {
 		SimpleDateFormat format1 = new SimpleDateFormat ("dd.MM.yyyy");
 		Date dat = new Date();
 		sku = i ;

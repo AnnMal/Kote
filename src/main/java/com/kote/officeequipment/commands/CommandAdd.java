@@ -1,40 +1,23 @@
 /** Класс команд */
 
-package com.kote.officeequipment;
+package main.java.com.kote.officeequipment.commands;
 
-import ru.prgmt.warehouse.application.result.*;
+import main.java.com.kote.officeequipment.eq.*;
 import ru.prgmt.warehouse.application.*;
-import java.util.*;
-import java.io.*;
-import java.util.regex.*;
+import ru.prgmt.warehouse.application.result.*;
 
-public class Command {
+import java.util.Scanner;
 
-    public String name = "";
+public class CommandAdd extends Command{
 
-    //public String NewCommand = "";
-
-    public String[] Commands = {"exit", "list", "add", "delete"};
-
-    public WriteFile WrF = new WriteFile();
-
-    /** Новая команда */
-
-    //public void Command() {};
-
-    public void doCommand (){
-        java.util.Scanner sc = new java.util.Scanner(System.in);;
-        System.out.println("I am wait command:");
-        System.out.println("list, add, delete or exit");
-        name = sc.nextLine();
-    }
+    public String name = "add";
 
     public static int indexOfIntArray(int key) {
         int returnvalue = -1;
-        for (int i = 0; i < OfficeEquipment.Equipments.size(); ++i) {
+        for (int i = 0; i < com.kote.officeequipment.OfficeEquipment.Equipments.size(); ++i) {
             //System.out.println(Sklad_Info.Equipments.get(i).sku);
             //System.out.println(Sklad_Info.Equipments.get(i).sku==key);
-            if (OfficeEquipment.Equipments.get(i).sku==key) {
+            if (com.kote.officeequipment.OfficeEquipment.Equipments.get(i).sku==key) {
                 //if (Sklad_Info.Equipments[i].sku==key) {
                 returnvalue = i;
                 return returnvalue;
@@ -43,26 +26,6 @@ public class Command {
             }
         }
         return returnvalue;
-    }
-
-    /** Удаление */
-
-    public String DelCommand(String Com) {
-        Pattern p = Pattern.compile("delete --sku (\\d+)",Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
-        Matcher m = p.matcher(Com);
-        if (!m.matches()) {
-            System.out.println("ERROR! For delete you mast use this command format: delete --sku <number>.");
-        } else {
-            //System.out.println(m.group(1));
-            for (Equipment lPr: OfficeEquipment.Equipments) {
-                if (lPr.sku==Integer.valueOf(m.group(1))) {
-                    OfficeEquipment.Equipments.remove(lPr);
-                    System.out.println("SUCCESSFUL DELETE");
-                    break;
-                }
-            }
-        }
-        return("SUCCESSFUL DELETE");
     }
 
     /**
@@ -78,7 +41,7 @@ public class Command {
         //System.out.println(Arrays.toString(RStr));
         Monitor TMo;
         Printer TPr;
-        Scanner TSr;
+        main.java.com.kote.officeequipment.eq.Scanner TSr;
         int Pr = 0;
         String TName = "";
         int TQua = 0;
@@ -227,15 +190,15 @@ public class Command {
             switch (Pr) {
                 case 1:
                     TMo=new Monitor(TSku, "MONITOR", TName, TQua, TCol, TSiz, "");
-                    OfficeEquipment.Equipments.add(TMo);
+                    com.kote.officeequipment.OfficeEquipment.Equipments.add(TMo);
                     break;
                 case 2:
                     TPr=new Printer(TSku, "PRINTER", TName, TQua, TCol, false);
-                    OfficeEquipment.Equipments.add(TPr);
+                    com.kote.officeequipment.OfficeEquipment.Equipments.add(TPr);
                     break;
                 case 3:
-                    TSr=new Scanner(TSku, "SCANNER", TName, TQua, TCol, false);
-                    OfficeEquipment.Equipments.add(TSr);
+                    TSr=new main.java.com.kote.officeequipment.eq.Scanner(TSku, "SCANNER", TName, TQua, TCol, false);
+                    com.kote.officeequipment.OfficeEquipment.Equipments.add(TSr);
                     break;
             }
             //System.out.println(Arrays.toString(Sklad_Info.Equipments));
