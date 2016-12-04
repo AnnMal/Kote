@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.io.*;
 
 import static com.kote.officeequipment.OfficeEquipment.COLLINES;
 import static com.kote.officeequipment.OfficeEquipment.Equipments;
@@ -28,7 +30,6 @@ public class CommandList implements ApplicationController{
 
         List<Equipment> eq = new ArrayList<Equipment>(ts);
 
-        System.out.println(eq.size());
         if (ts>COLLINES) {
             // eq.Add(Equipments.get(1));
             System.arraycopy(Equipments, COLLINES*(pp-1), eq, 0, COLLINES);
@@ -40,12 +41,9 @@ public class CommandList implements ApplicationController{
         PagedResult pr = new PagedResult(p);
 
         eq = p.getContent();
-        //for (int j=0; j<2; j++) {
-        //for (Equipment lPr : eq) {
-        //System.out.println(paging.getPageNumber());
-        //lPr.read();
-        //     System.out.println(eq.get(0));
-        //}
+        for (Equipment lPr : eq) {
+           // lPr.read();
+        }
         return pr;
     }
 

@@ -16,15 +16,12 @@ public class CommandDel extends Command{
 
 
     /** Удаление */
-
-   // @Override
     public void delCommand(String Com) {
         Pattern p = Pattern.compile("delete --sku (\\d+)",Pattern.CASE_INSENSITIVE | Pattern.DOTALL);
         Matcher m = p.matcher(Com);
         if (!m.matches()) {
             System.out.println("ERROR! For delete you mast use this command format: delete --sku <number>.");
         } else {
-            //System.out.println(m.group(1));
             for (Equipment lPr: com.kote.officeequipment.OfficeEquipment.Equipments) {
                 if (lPr.sku==Integer.valueOf(m.group(1))) {
                     com.kote.officeequipment.OfficeEquipment.Equipments.remove(lPr);
@@ -33,7 +30,6 @@ public class CommandDel extends Command{
                 }
             }
         }
-        //return("SUCCESSFUL DELETE");
     }
 
 

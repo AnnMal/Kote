@@ -3,17 +3,10 @@
 package main.java.com.kote.officeequipment.commands;
 
 import main.java.com.kote.officeequipment.dbase.WriteFile;
-import ru.prgmt.warehouse.application.result.*;
-import ru.prgmt.warehouse.application.*;
-import java.util.*;
-import java.io.*;
-import java.util.regex.*;
 
 public class Command {
 
     public String name = "";
-
-    //public String NewCommand = "";
 
     public String[] Commands = {"exit", "list", "add", "delete"};
 

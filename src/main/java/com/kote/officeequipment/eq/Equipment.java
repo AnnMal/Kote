@@ -20,8 +20,6 @@ public abstract class Equipment implements Serializable {
 
 	public String name;
 
-	//public Date dateWorks;
-
 	public String dateWorks;
 
 	public int quantity;
